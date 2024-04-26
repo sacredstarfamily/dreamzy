@@ -218,7 +218,7 @@ async function addInterpretation(token:string,  interpretation:InterpretationFor
     }
     return { data, error }
 }
-async function updateUserData(token: string, updatedUserData:UserFormDataType): Promise<APIResponse<UserType>> {
+async function updateUserData(token: string, updatedUserData:Partial<UserFormDataType>): Promise<APIResponse<UserType>> {
     let data;
     let error;
     const convertUserData = {
@@ -226,7 +226,7 @@ async function updateUserData(token: string, updatedUserData:UserFormDataType): 
         "last_name": updatedUserData.last_name,
         "email": updatedUserData.email,
         "username": updatedUserData.username,
-        "password": updatedUserData.password,
+        
     }
     try{
         const response = await apiClientTokenAuth(token).put(userEndpoint, convertUserData);

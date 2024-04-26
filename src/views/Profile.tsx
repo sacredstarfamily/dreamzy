@@ -28,13 +28,12 @@ export default function Profile({currentUser, flashMessage}: ProfileProps){
     const handleFormSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         const token = localStorage.getItem('token');
-        const updatedUserData:UserFormDataType = {
+        const updatedUserData:Partial<UserFormDataType> = {
             username: newUserData.username,
             email: newUserData.email,
             first_name: newUserData.first_name,
             last_name: newUserData.last_name,
-            password: '',
-            confirmPassword:''
+            
         }
         const response = await updateUserData(token!, updatedUserData);
         if (response.error){
