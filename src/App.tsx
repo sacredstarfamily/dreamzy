@@ -61,7 +61,7 @@ const logUserOut = () => {
                     <Route path='/signup' element={<SignUp logUserIn={logUserIn} flashMessage={flashMessage}/> } />
                     <Route path='/login' element={<Login flashMessage={flashMessage} logUserIn={logUserIn}/> } />
                     <Route path='/profile' element={<Profile isLoggedIn={isLoggedIn} currentUser={currentUser} flashMessage={flashMessage} />} />
-                    <Route path='/dreams' element={<Dreams currentUser={currentUser} flashMessage={flashMessage} handleClick={logUserOut}/> } />
+                    <Route path='/dreams' element={<Dreams currentUser={currentUser} flashMessage={flashMessage} /> } />
                     <Route path='/dreams/:dreamId' element={<EditDream flashMessage={flashMessage} currentUser={currentUser} />} /> 
                     <Route path='/interpret/:dreamId' element={<AddInterpretation flashMessage={flashMessage} currentUser={currentUser} />} />
                 </Routes>

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 type DreamCardProps = {
     dream: DreamType
-    currentUser: UserType
+    currentUser: UserType|null
 }
 
 export default function DreamCard({ dream, currentUser }: DreamCardProps) {
@@ -13,7 +13,7 @@ export default function DreamCard({ dream, currentUser }: DreamCardProps) {
     useEffect(() => {
         if(dream.author.id === currentUser?.id && dream.isPublic === 'PUBLIC'){
             setInterpretable(true);
-        } else if(dream.isPublic === 'EXCLUSIVE' && dream.allowed_users.includes(currentUser?.id)){
+        } else if(dream.isPublic === 'EXCLUSIVE' && dream.allowed_users?.includes(currentUser!.id)){
             setInterpretable(true);
         }
     }, [dream, currentUser])

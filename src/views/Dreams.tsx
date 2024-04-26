@@ -1,22 +1,18 @@
 import { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import DreamCard from '../components/DreamCard';
 import { getUserDreams } from '../lib/apiWrapper';
 
-import { UserType, DreamType } from '../types/index';
+import { UserType, DreamType, CategoryType } from '../types/index';
 
 type DreamsProps = {
     currentUser: UserType|null,
     flashMessage: (newMessage:string, newCategory:CategoryType) => void,
-    handleClick: () => void
+   
 }
-export default function Dreams({currentUser, flashMessage, handleClick}: DreamsProps) { 
+export default function Dreams({currentUser, flashMessage}: DreamsProps) { 
     
     const [dreams, setDreams] = useState<DreamType[]>([]);
-    const [fetchDreamData, setFetchDreamData] = useState(true);
+    const [fetchDreamData] = useState(true);
     useEffect(() => {
         async function fetchData(){
             const token = localStorage.getItem('token');

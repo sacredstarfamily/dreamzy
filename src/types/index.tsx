@@ -22,13 +22,18 @@ export type DreamType = {
     logDate:string,
     user_id:number,
     isPublic:string
+    author:UserType,
+    allowed_users?:number[],
+    dream_date:string,
+    keywords:string[]|undefined
 }
 export type DreamFormDataType = {
     dream:string,
     sleepStart:string,
     sleepEnd:string,
     isPublic:string,
-    keywords:string[]
+    keywords:string[],
+    id:number
 }
 export type InterpretationType = {
     id:number,

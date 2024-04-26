@@ -6,7 +6,7 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { UserType } from '../types';
-import { DreamFormDataType } from '../types';
+import { DreamFormDataType, CategoryType } from '../types';
 
 type EditDreamProps = {
     flashMessage: (message:string, category:CategoryType) => void
@@ -18,7 +18,7 @@ export default function EditDream({ flashMessage, currentUser }: EditDreamProps)
     const { dreamId } = useParams();
     const navigate = useNavigate();
 
-    const [dreamToEditData, setDreamToEditData] = useState<DreamFormDataType>({dream: '', isPublic: ''})
+    const [dreamToEditData, setDreamToEditData] = useState<DreamFormDataType>({id: 0,dream: '', isPublic: '', sleepStart: '',sleepEnd:'', keywords: ['']})
     const [showModal, setShowModal] = useState(false);
 
     const openModal = () => setShowModal(true);
@@ -30,10 +30,9 @@ export default function EditDream({ flashMessage, currentUser }: EditDreamProps)
             const response = await getUserDreams(token);
             if (response.data){
                 const dreams = response.data
-                const dream = dreams.find((q) => q.id === parseInt(dreamId));
-                const currentUser = JSON.parse(localStorage.getItem('currentUser')|| '{}')
+                const dream = dreams.find((q) => q.id === parseInt(dreamId!));
                 console.log(dream);
-                    setDreamToEditData({dream: dream.dream,  isPublic: dream.isPublic})
+                    {dream && setDreamToEditData({id: dream.id, dream: dream.dream,  isPublic: dream.isPublic, sleepStart: dream.sleepStart,sleepEnd: dream.sleepEnd, keywords: dream.keywords!})}
                 
             } else if(response.error){
                 flashMessage(response.error, 'danger');
@@ -54,7 +53,7 @@ export default function EditDream({ flashMessage, currentUser }: EditDreamProps)
     const handleFormSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         const token = localStorage.getItem('token') || ''
-        const response = await editDreamById(token,dreamId, dreamToEditData);
+        const response = await editDreamById(token,parseInt(dreamId!), dreamToEditData);
         if (response.error){
             flashMessage(response.error, 'danger')
         } else {
@@ -65,7 +64,7 @@ export default function EditDream({ flashMessage, currentUser }: EditDreamProps)
 
     const handleDeleteClick = async () => {
         const token = localStorage.getItem('token') || '';
-        const response = await deleteDreamById( token,dreamId!);
+        const response = await deleteDreamById( token,parseInt(dreamId!));
         if (response.error){
             flashMessage(response.error, 'danger')
         } else {

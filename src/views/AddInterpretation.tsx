@@ -9,13 +9,13 @@ import { getAllDreams } from '../lib/apiWrapper';
 type InterpretationProps = {
     currentUser: UserType|null,
     flashMessage: (newMessage:string, newCategory:CategoryType) => void,
-    handleClick: () => void
+    
 }
 export default function AddInterpretation({currentUser, flashMessage}: InterpretationProps){
     const { dreamId } = useParams();
     const navigate = useNavigate();
-    const [interpretationData, setInterpretationData] = useState<InterpretationFormDataType>({interpretation: '', dreamId: dreamId})
-    const [dreamToAddIData, setDreamToAddIData] = useState<DreamType|null>(null)
+    const [interpretationData, setInterpretationData] = useState<InterpretationFormDataType>({interpretation: '', dreamId: parseInt(dreamId!)})
+    const [dreamToAddIData, setDreamToAddIData] = useState<DreamType|undefined>(undefined)
     
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInterpretationData({...interpretationData, [event.target.name]:event.target.value })
@@ -39,7 +39,7 @@ export default function AddInterpretation({currentUser, flashMessage}: Interpret
             const response = await getAllDreams(token);
             if (response.data){
                 const dreams = response.data
-                const dream = dreams.find((q) => q.id === parseInt(dreamId));
+                const dream = dreams.find((q) => q.id === parseInt(dreamId!));
                 
                 console.log(dream);
                     setDreamToAddIData(dream)
@@ -62,7 +62,7 @@ export default function AddInterpretation({currentUser, flashMessage}: Interpret
     return (
         <>
         <h1 className="text-center">Add Interpretation</h1>
-        {dreamToAddIData && <DreamCard dream={dreamToAddIData} currentUser={currentUser}/> }
+        {dreamToAddIData && <DreamCard dream={dreamToAddIData} currentUser={currentUser!}/> }
         <Form onSubmit={handleFormSubmit}>
             <Form.Group>
                 <Form.Label>Interpretation</Form.Label>

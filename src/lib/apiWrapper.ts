@@ -123,7 +123,7 @@ async function getUserDreams(token:string): Promise<APIResponse<DreamType[]>> {
     return { data, error }
 }
 
-async function editDreamById(token:string,dreamId, dream:DreamFormDataType): Promise<APIResponse<DreamType>> {
+async function editDreamById(token:string,dreamId:number, dream:DreamFormDataType): Promise<APIResponse<DreamType>> {
     let data;
     let error;
     const dreamData = {
@@ -145,11 +145,11 @@ async function editDreamById(token:string,dreamId, dream:DreamFormDataType): Pro
     }
     return { data, error }
 }
-async function getDreamById(token:string, questionId:number): Promise<APIResponse<QuestionType>> {
+async function getDreamById(token:string, dreamId:number): Promise<APIResponse<DreamType>> {
     let data;
     let error;
     try{
-        const response = await apiClientTokenAuth(token).get(quizEndpoint + '/' + questionId);
+        const response = await apiClientTokenAuth(token).get(userDreamsEndpoint + '/' + dreamId);
         data = response.data
     } catch(err) {
         if (axios.isAxiosError(err)){
@@ -184,7 +184,7 @@ async function createDream(token:string, dream:DreamFormDataType): Promise<APIRe
     return { data, error }
 
 }
-async function deleteDreamById(token:string, dreamId:number): Promise<APIResponse<QuestionType>> {
+async function deleteDreamById(token:string, dreamId:number): Promise<APIResponse<DreamType>> {
     let data;
     let error;
     try{

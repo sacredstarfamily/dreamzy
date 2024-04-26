@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-import {UserType, DreamType} from '../types';
+import {UserType, DreamType, DreamFormDataType, CategoryType} from '../types';
 import DreamCard from '../components/DreamCard';
 import DreamForm from '../components/DreamForm';
 import { getAllDreams, createDream } from '../lib/apiWrapper';
@@ -47,8 +47,8 @@ export default function Home({currentUser, isLoggedIn, flashMessage}:HomeProps) 
         const sortFunctions:Sorting = {
             idAsc: (a:DreamType, b:DreamType) => a.id - b.id,
             idDesc: (a:DreamType, b:DreamType) => b.id - a.id,
-            titleAsc: (a:DreamType, b:DreamType) => a.title > b.title ? 1 : -1,
-            titleDesc: (a:DreamType, b:DreamType) => b.title > a.title ? 1 : -1
+            titleAsc: (a:DreamType, b:DreamType) => a.dream > b.dream ? 1 : -1,
+            titleDesc: (a:DreamType, b:DreamType) => b.dream > a.dream ? 1 : -1
         }
         const func = sortFunctions[e.target.value as keyof Sorting];
         const newSortedArr = [...dreams].sort(func);
