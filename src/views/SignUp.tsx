@@ -44,7 +44,7 @@ export default function SignUp({flashMessage, logUserIn}: SignUpProps) {
             // eslint-disable-next-line prefer-const
             let newUser = response.data!
             logUserIn();
-            flashMessage(`Congrats ${newUser.firstName} ${newUser.lastName} has been created with the username ${newUser.username}`, 'success')
+            flashMessage(`Congrats ${newUser.first_name} ${newUser.last_name} has been created with the username ${newUser.username}`, 'success')
             //console.log(`Congrats ${newUser.firstName} ${newUser.lastName} has been created with the username ${newUser.username}`)
         }
     }

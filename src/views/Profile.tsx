@@ -15,12 +15,12 @@ type ProfileProps = {
 }
 export default function Profile({currentUser, flashMessage}: ProfileProps){
     const [showModal, setShowModal] = useState(false);
-    const [newUserData, setNewUserData] = useState<UserType>({username:'' , email: '', firstName: '', lastName: '', id: 0, dateCreated: ''});
+    const [newUserData, setNewUserData] = useState<UserType>({username:'' , email: '', first_name: '', last_name: '', id: 0, dateCreated: ''});
     const openModal = () => setShowModal(true);
     const closeModal = () => setShowModal(false);
     const navigate = useNavigate();
     useEffect(() => {
-        {currentUser && setNewUserData({username: currentUser.username, email: currentUser.email, firstName: currentUser.firstName, lastName: currentUser.lastName, id: currentUser.id, dateCreated: currentUser.dateCreated})}
+        {currentUser && setNewUserData({username: currentUser.username, email: currentUser.email, first_name: currentUser.first_name, last_name: currentUser.last_name, id: currentUser.id, dateCreated: currentUser.dateCreated})}
     }, [currentUser])
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setNewUserData({...newUserData, [event.target.name]:event.target.value })
@@ -31,8 +31,8 @@ export default function Profile({currentUser, flashMessage}: ProfileProps){
         const updatedUserData:UserFormDataType = {
             username: newUserData.username,
             email: newUserData.email,
-            first_name: newUserData.firstName,
-            last_name: newUserData.lastName,
+            first_name: newUserData.first_name,
+            last_name: newUserData.last_name,
             password: '',
             confirmPassword:''
         }
@@ -40,7 +40,7 @@ export default function Profile({currentUser, flashMessage}: ProfileProps){
         if (response.error){
             flashMessage(response.error, 'danger')
         } else {
-            flashMessage(`${response.data?.firstName} has been updated`, 'success');
+            flashMessage(`${response.data?.first_name} has been updated`, 'success');
             navigate('/')
         }
     }
@@ -71,11 +71,11 @@ export default function Profile({currentUser, flashMessage}: ProfileProps){
             </Form.Group>
             <Form.Group>
                 <Form.Label>First Name</Form.Label>
-                <Form.Control type='text' name='firstName' value={newUserData?.firstName} onChange={handleInputChange} />
+                <Form.Control type='text' name='firstName' value={newUserData?.first_name} onChange={handleInputChange} />
             </Form.Group>
             <Form.Group>
                 <Form.Label>Last Name</Form.Label>
-                <Form.Control type='text' name='lastName' value={newUserData?.lastName} onChange={handleInputChange} />
+                <Form.Control type='text' name='lastName' value={newUserData?.last_name} onChange={handleInputChange} />
             </Form.Group>
             <Button variant='primary' type='submit'>Update</Button>
             <Button variant='danger' onClick={openModal}>Delete</Button>
@@ -84,14 +84,14 @@ export default function Profile({currentUser, flashMessage}: ProfileProps){
         </Card>
         <Modal show={showModal} onHide={closeModal}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Delete {newUserData?.firstName}?</Modal.Title>
+                    <Modal.Title>Delete {newUserData?.first_name}?</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    Are you sure you want to delete {newUserData?.lastName}? This action cannot be undone.
+                    Are you sure you want to delete {newUserData?.username}? This action cannot be undone.
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant='secondary' onClick={closeModal}>Close</Button>
-                    <Button variant='danger' onClick={handleDeleteClick}>Delete Post</Button>
+                    <Button variant='danger' onClick={handleDeleteClick}>Delete Account</Button>
                 </Modal.Footer>
             </Modal>
         </>

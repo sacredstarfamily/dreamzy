@@ -9,7 +9,7 @@ type DreamFormProps = {
 }
 
 export default function DreamForm({ addNewDream }: DreamFormProps) {
-    const [newDream, setNewDream] = useState<DreamFormDataType>({id: 0,dream: '', sleepStart: '', sleepEnd: '', isPublic: '', keywords: []});
+    const [newDream, setNewDream] = useState<DreamFormDataType>({id: 0,dream: '', sleepStart: '', sleepEnd: '', isPublic: 'PRIVATE', keywords: []});
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         console.log(event.target.name, event.target.value);

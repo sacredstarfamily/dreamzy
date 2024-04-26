@@ -18,7 +18,7 @@ export default function EditDream({ flashMessage, currentUser }: EditDreamProps)
     const { dreamId } = useParams();
     const navigate = useNavigate();
 
-    const [dreamToEditData, setDreamToEditData] = useState<DreamFormDataType>({id: 0,dream: '', isPublic: '', sleepStart: '',sleepEnd:'', keywords: ['']})
+    const [dreamToEditData, setDreamToEditData] = useState<DreamFormDataType>({id: 0,dream: '', isPublic: 'PRIVVATE', sleepStart: '',sleepEnd:'', keywords: ['']})
     const [showModal, setShowModal] = useState(false);
 
     const openModal = () => setShowModal(true);
@@ -95,14 +95,14 @@ export default function EditDream({ flashMessage, currentUser }: EditDreamProps)
             </Card>
             <Modal show={showModal} onHide={closeModal}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Delete {dreamToEditData.dream}?</Modal.Title>
+                    <Modal.Title>Delete {dreamToEditData.id}?</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     Are you sure you want to delete {dreamToEditData.id}? This action cannot be undone.
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant='secondary' onClick={closeModal}>Close</Button>
-                    <Button variant='danger' onClick={handleDeleteClick}>Delete Post</Button>
+                    <Button variant='danger' onClick={handleDeleteClick}>Delete Dream</Button>
                 </Modal.Footer>
             </Modal>
         </>
