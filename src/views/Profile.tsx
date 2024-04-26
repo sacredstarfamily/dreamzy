@@ -71,11 +71,11 @@ export default function Profile({currentUser, flashMessage}: ProfileProps){
             </Form.Group>
             <Form.Group>
                 <Form.Label>First Name</Form.Label>
-                <Form.Control type='text' name='firstName' value={newUserData?.first_name} onChange={handleInputChange} />
+                <Form.Control type='text' name='first_name' value={newUserData?.first_name} onChange={handleInputChange} />
             </Form.Group>
             <Form.Group>
                 <Form.Label>Last Name</Form.Label>
-                <Form.Control type='text' name='lastName' value={newUserData?.last_name} onChange={handleInputChange} />
+                <Form.Control type='text' name='last_name' value={newUserData?.last_name} onChange={handleInputChange} />
             </Form.Group>
             <Button variant='primary' type='submit'>Update</Button>
             <Button variant='danger' onClick={openModal}>Delete</Button>
