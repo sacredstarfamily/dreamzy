@@ -1,0 +1,37 @@
+.logo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: #25b0f6;
+
+}
+.cloud{ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:white;
+    padding:20px;
+    width: 80%;
+    box-shadow: 10px 10px rgba(0,0,0,0.2);
+    border-radius:100px;
+ }
+ 
+.cloudContainer {
+    position: relative;  
+}
+#sheep{
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    top:-20px;
+
+    transform: translate(50%, -5%);
+}
+#personSleeping{
+    display:inline-block;
+    position: relative;
+    align-self: center;
+    transform: translate(-20%, 10%);
+    z-index: 2;
+}
