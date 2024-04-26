@@ -26,7 +26,7 @@ export default function DreamCard({ dream, currentUser }: DreamCardProps) {
             <Card.Body>
                 <Card.Title className="text-center">slept from:{ dream.sleepStart } - {dream.sleepEnd}</Card.Title>
                 <label htmlFor="dream" className="text-center">The Dream:</label>
-                <Card.Text name="dream"className="border-bottom p-2">{ dream.dream }</Card.Text>
+                <Card.Text id ="dream" className="border-bottom p-2">{ dream.dream }</Card.Text>
                 <Card.Text className="text-center">This dream is { dream.isPublic }</Card.Text>
                 <Card.Text className="text-center">Keywords: { dream.keywords }</Card.Text>
                <Row className="mx-5 justify-content-center align-items-center align-self-center">
