@@ -25,7 +25,8 @@ export type DreamType = {
     author:UserType,
     allowed_users?:number[],
     dream_date:string,
-    keywords:string[]|undefined
+    keywords:string[]|undefined,
+    likes:number|undefined
 }
 export type DreamFormDataType = {
     dream:string,

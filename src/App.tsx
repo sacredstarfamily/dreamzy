@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import { UserType, CategoryType } from './types'
@@ -12,6 +12,20 @@ import Dreams from './views/Dreams';
 import EditDream from './views/EditDream';
 import Profile from './views/Profile';
 import AddInterpretation from './views/AddInterpretation';
+import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
+import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
+import { PhantomWalletAdapter } from '@solana/wallet-adapter-wallets';
+import {
+    WalletModalProvider
+} from '@solana/wallet-adapter-react-ui';
+import { clusterApiUrl } from '@solana/web3.js';
+import { Buffer as BufferPolyfill } from 'buffer'
+
+globalThis.Buffer = BufferPolyfill
+
+
+
+import '@solana/wallet-adapter-react-ui/styles.css';
 function App() {
   
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -51,8 +65,26 @@ const logUserOut = () => {
   localStorage.removeItem('currentUser');
   flashMessage('You have successfully logged out', 'success');
 }
+const network = WalletAdapterNetwork.Devnet;
+
+    const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+
+    const wallets = useMemo(
+        () => [
+          
+            
+            new PhantomWalletAdapter({ network }),
+        ],
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        [network]
+    );
   return (
     <>
+    <ConnectionProvider endpoint={endpoint}>
+        <WalletProvider wallets={wallets} autoConnect>
+            <WalletModalProvider>
+               
+            
      <Navigation isLoggedIn={isLoggedIn} logUserOut={logUserOut}/>
             <Container>
             {message && <AlertMessage message={message} category={category} flashMessage={flashMessage}/>}
@@ -65,7 +97,11 @@ const logUserOut = () => {
                     <Route path='/dreams/:dreamId' element={<EditDream flashMessage={flashMessage} currentUser={currentUser} />} /> 
                     <Route path='/interpret/:dreamId' element={<AddInterpretation flashMessage={flashMessage} currentUser={currentUser} />} />
                 </Routes>
+                
             </Container>
+            </WalletModalProvider>
+            </WalletProvider>
+    </ConnectionProvider>
     </>
   )
 }

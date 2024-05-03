@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-
+import {
+    WalletDisconnectButton,
+    WalletMultiButton
+} from '@solana/wallet-adapter-react-ui';
 
 type NavigationProps = {
     isLoggedIn: boolean
@@ -25,6 +28,8 @@ export default function Navigation({ isLoggedIn, logUserOut }: NavigationProps){
                             <>
                                 <Nav.Link href='/dreams'>See Your Dreams</Nav.Link>
                                 <Nav.Link href='/profile'>Edit Profile</Nav.Link>
+                                <WalletMultiButton />
+                                <WalletDisconnectButton />
                                 <Nav.Link href='/' onClick={logUserOut}>Log Out</Nav.Link>
                             </>
                         ) : (

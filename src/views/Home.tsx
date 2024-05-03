@@ -102,7 +102,7 @@ export default function Home({currentUser, isLoggedIn, flashMessage}:HomeProps) 
                 </Form.Select>
             </Col>
         </Row>}
-      {isLoggedIn && <Button onClick={()=>{setShowForm(!showForm)}}>Create Dream</Button>}
+      {isLoggedIn && <Button className="w-100 mt-5 addDreamBtn"onClick={()=>{setShowForm(!showForm)}}>Create Dream</Button>}
       {showForm && <DreamForm addNewDream={addNewDream} />}
       {dreams.filter(dream => dream.dream.toLowerCase().includes(searchTerm.toLowerCase())).map( p => <DreamCard key={p.id} dream={p} currentUser={currentUser} /> )}
         </>

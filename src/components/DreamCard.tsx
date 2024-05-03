@@ -21,6 +21,7 @@ export default function DreamCard({ dream, currentUser }: DreamCardProps) {
         }
     }, [dream, currentUser])
     return (
+        <>
         <Card className='my-3 bg-custom' text='black'>
             <Card.Header className="text-center">Posted on:{ dream.dream_date }</Card.Header>
             <Card.Body>
@@ -37,8 +38,22 @@ export default function DreamCard({ dream, currentUser }: DreamCardProps) {
                 {interpretable && <Link to={`/interpret/${dream.id}`}><Button variant='success'>Interpret Dream</Button></Link>}
                 </Col>
                 </Row>
+               
                 <Card.Subtitle className="text-center mt-2">Created By: { dream.author.username }</Card.Subtitle>
+                <div className="buttonContainer">
+        <div className="likeBtnContainer">
+        <img src="./thumbs-up1.png" alt="thumbs up" className="likebtn" />
+        <p className="liketext">{ dream.likes } Likes</p>
+        </div>
+        <div className="addInterpretationBtnContainer">
+            <img src="./thumbs-up.png" alt="add interpretation" className="addInterpretationBtn" />
+            <p className="addInterpretationText">Interpretations</p>
+        </div>
+        </div>
             </Card.Body>
+            
         </Card>
+       
+        </>
     )
 }
