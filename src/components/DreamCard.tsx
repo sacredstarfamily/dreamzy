@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import thumbsup from '../assets/thumbs-up.png';
 type DreamCardProps = {
     dream: DreamType
     currentUser: UserType|null
@@ -42,7 +42,7 @@ export default function DreamCard({ dream, currentUser }: DreamCardProps) {
                 <Card.Subtitle className="text-center mt-2">Created By: { dream.author.username }</Card.Subtitle>
                 <div className="buttonContainer">
         <div className="likeBtnContainer">
-        <img src="./thumbs-up1.png" alt="thumbs up" className="likebtn" />
+        <img src={thumbsup} alt="thumbs up" className="likebtn" />
         <p className="liketext">{ dream.likes } Likes</p>
         </div>
         <div className="addInterpretationBtnContainer">
