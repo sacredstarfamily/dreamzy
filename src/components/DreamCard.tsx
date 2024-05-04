@@ -6,6 +6,8 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import thumbsup from '../assets/thumbs-up.png';
+import aOk from '../assets/OK.png';
+
 type DreamCardProps = {
     dream: DreamType
     currentUser: UserType|null
@@ -46,7 +48,7 @@ export default function DreamCard({ dream, currentUser }: DreamCardProps) {
         <p className="liketext">{ dream.likes } Likes</p>
         </div>
         <div className="addInterpretationBtnContainer">
-            <img src="./thumbs-up.png" alt="add interpretation" className="addInterpretationBtn" />
+            <img src={aOk} alt="add interpretation" className="addInterpretationBtn" />
             <p className="addInterpretationText">Interpretations</p>
         </div>
         </div>
