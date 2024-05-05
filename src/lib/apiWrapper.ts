@@ -172,7 +172,7 @@ async function createDream(token:string, dream:DreamFormDataType): Promise<APIRe
         "keywords": dream.keywords
     }
     try{
-        const response = await apiClientTokenAuth(token).post(userDreamsEndpoint, dreamData);
+        const response = await apiClientTokenAuth(token).post(publicDreamsEndpoint, dreamData);
         data = response.data
     } catch(err) {
         if (axios.isAxiosError(err)){
