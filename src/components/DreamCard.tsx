@@ -22,6 +22,17 @@ export default function DreamCard({ dream, currentUser }: DreamCardProps) {
             setInterpretable(true);
         }
     }, [dream, currentUser])
+    async function likeUDream(){
+        const token = localStorage.getItem('token');
+        if(token){
+            const response = await likeDream(token, dream.id);
+            if(response.error){
+                console.log(response.error)
+            } else {
+                console.log(response.data)
+            }
+        }
+    }
     return (
         <>
         <Card className='my-3 bg-custom' text='black'>
@@ -44,7 +55,7 @@ export default function DreamCard({ dream, currentUser }: DreamCardProps) {
                 <Card.Subtitle className="text-center mt-2">Created By: { dream.author.username }</Card.Subtitle>
                 <div className="buttonContainer">
         <div className="likeBtnContainer">
-        <button onClick={likeDream}><img src={thumbsup} alt="thumbs up" className="likebtn" /></button>
+        <button onClick={likeUDream}><img src={thumbsup} alt="thumbs up" className="likebtn" /></button>
         <p className="liketext">{ dream.likes } Likes</p>
         </div>
         <div className="addInterpretationBtnContainer">
