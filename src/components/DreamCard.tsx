@@ -7,7 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import thumbsup from '../assets/thumbs-up.png';
 import aOk from '../assets/OK.png';
-
+import likeDream from '../lib/apiWrapper';
 type DreamCardProps = {
     dream: DreamType
     currentUser: UserType|null
@@ -44,7 +44,7 @@ export default function DreamCard({ dream, currentUser }: DreamCardProps) {
                 <Card.Subtitle className="text-center mt-2">Created By: { dream.author.username }</Card.Subtitle>
                 <div className="buttonContainer">
         <div className="likeBtnContainer">
-        <img src={thumbsup} alt="thumbs up" className="likebtn" />
+        <button onclick={likeDream}><img src={thumbsup} alt="thumbs up" className="likebtn" /></button>
         <p className="liketext">{ dream.likes } Likes</p>
         </div>
         <div className="addInterpretationBtnContainer">
