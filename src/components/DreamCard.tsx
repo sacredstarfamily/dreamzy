@@ -44,7 +44,7 @@ export default function DreamCard({ dream, currentUser }: DreamCardProps) {
                 <Card.Subtitle className="text-center mt-2">Created By: { dream.author.username }</Card.Subtitle>
                 <div className="buttonContainer">
         <div className="likeBtnContainer">
-        <button onclick={likeDream}><img src={thumbsup} alt="thumbs up" className="likebtn" /></button>
+        <button onClick={likeDream}><img src={thumbsup} alt="thumbs up" className="likebtn" /></button>
         <p className="liketext">{ dream.likes } Likes</p>
         </div>
         <div className="addInterpretationBtnContainer">
