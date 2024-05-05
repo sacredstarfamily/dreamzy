@@ -7,7 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import thumbsup from '../assets/thumbs-up.png';
 import aOk from '../assets/OK.png';
-import likeDream from '../lib/apiWrapper';
+import {likeDream} from '../lib/apiWrapper';
 type DreamCardProps = {
     dream: DreamType
     currentUser: UserType|null
