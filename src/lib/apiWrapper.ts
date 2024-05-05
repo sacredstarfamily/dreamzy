@@ -184,6 +184,22 @@ async function createDream(token:string, dream:DreamFormDataType): Promise<APIRe
     return { data, error }
 
 }
+async function likeDream(token: string, dreamId:number):Promise<APIResponse<DreamType>> {
+    let data;
+    let error;
+    try{
+        const response = await apiClientTokenAuth(token).post(userDreamsEndpoint + '/' + dreamId + '/sendlike');
+        data = response.data
+    } catch(err) {
+        if (axios.isAxiosError(err)){
+            error = err.message
+        } else {
+            error = 'Something went wrong'
+        }
+    }
+    return { data, error }
+}
+
 async function deleteDreamById(token:string, dreamId:number): Promise<APIResponse<DreamType>> {
     let data;
     let error;
@@ -284,5 +300,6 @@ export {
     addInterpretation,
     updateInterpretation,
     updateUserData,
+    likeDream,
     deleteUserData
 }
