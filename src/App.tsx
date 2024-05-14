@@ -26,6 +26,8 @@ globalThis.Buffer = BufferPolyfill
 
 
 import '@solana/wallet-adapter-react-ui/styles.css';
+import ViewInterpretation from './views/ViewInterpretaion';
+import Messages from './views/Messages';
 function App() {
   
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -96,6 +98,8 @@ const network = WalletAdapterNetwork.Devnet;
                     <Route path='/dreams' element={<Dreams currentUser={currentUser} flashMessage={flashMessage} /> } />
                     <Route path='/dreams/:dreamId' element={<EditDream flashMessage={flashMessage} currentUser={currentUser} />} /> 
                     <Route path='/interpret/:dreamId' element={<AddInterpretation flashMessage={flashMessage} currentUser={currentUser} />} />
+                    <Route path='/interpretations/:dreamId' element={<ViewInterpretation currentUser={currentUser} flashMessage={flashMessage} />} />
+                    <Route path='/messages' element={<Messages currentUser={currentUser}/>} />
                 </Routes>
                 
             </Container>

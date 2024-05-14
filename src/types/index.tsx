@@ -47,6 +47,18 @@ export type InterpretationFormDataType = {
     interpretation:string
     dreamId:number
 }
+export type MessageDataType = {
+    message:string,
+    sender_id:number,
+    messageTo:number|undefined,
+}
+export type ReceivedMessageDataType = {
+    id:number,
+    message:string,
+    sender_id:number,
+    receiver_id:number,
+    log_date:string
+}
 export type CategoryType = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark'
 
 export type TokenType = {

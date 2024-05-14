@@ -27,10 +27,11 @@ export default function Navigation({ isLoggedIn, logUserOut }: NavigationProps){
                         {isLoggedIn ? (
                             <>
                                 <Nav.Link href='/dreams'>See Your Dreams</Nav.Link>
+                                <Nav.Link href='/messages'>Messages</Nav.Link>
                                 <Nav.Link href='/profile'>Edit Profile</Nav.Link>
+                                <Nav.Link href='/' onClick={logUserOut}>Log Out</Nav.Link>
                                 <WalletMultiButton />
                                 <WalletDisconnectButton />
-                                <Nav.Link href='/' onClick={logUserOut}>Log Out</Nav.Link>
                             </>
                         ) : (
                             <>

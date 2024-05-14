@@ -21,19 +21,23 @@
    display: flex;
    flex-direction: row;
    justify-content: space-around;
-   padding-top: 10px;
-    width:100%;
-    border:1px solid #25b0f6;
-    height: 80px;
- }
- .likeBtnContainer {
-    display: flex;
-    justify-content: center;
-    border-radius: 30px;
     align-items: center;
-    width: 40px;
-    height: 40px;
-    background: #3eb7f4;
+   width:100%;
+   height: 150px;
+   border:1px solid #072635;
+  
+ }
+
+ .likeBtnContainer {
+   position: relative;
+   display: flex;
+   justify-content: center;
+   border-radius: 30px;
+   align-items: center;
+   width:200px;
+   height: 200px;
+   padding: 5px;
+   background: #3eb7f4;
  }
  .likebtn {
     bottom:0px;
@@ -44,14 +48,41 @@
     box-shadow: 3px 3px rgba(96, 96, 96, 0.2);
  }
  .liketext {
-    display: block;
-    font-size: 14px;
-      font-weight: bold;
-    color: rgb(28, 28, 28);
-    margin-left: -30px;
-    margin-top: 70px;
-    text-align: center;
-    z-index: 5;
+   font-size: 14px;
+   font-weight: bold;
+   line-break: unset;
+   line-height:.8em;
+   color: rgb(28, 28, 28);
+   margin-left: px;
+   margin-top: 10px;
+   text-align: center;
+   z-index: 5;
+ }
+ .likeBtn {
+    width: 120px;
+    height: 120px;
+    justify-content: center;
+    background-color: white;
+    border: none;
+    align-items: center;
+ }
+ .yup {
+    width: 120px;
+    height: 120px;
+    justify-content: center;
+    background-color: white;
+    border: none;
+    align-items: center;
+ }
+ .aokBtn {
+    width: 43px;
+    height: 43px;
+    justify-content: center;
+    border-radius: 30px;
+    align-items: center;
+    background: #3eb7f4;
+    margin-bottom: 0px;
+    box-shadow: 3px 3px rgba(96, 96, 96, 0.2);
  }
  .addInterpretationBtn {
     position: absolute;
@@ -70,7 +101,6 @@
  }
  .addInterpretationBtnContainer {
     position: relative;
-   ri
     bottom:15px;
     display: flex;
     justify-content: center;
@@ -87,8 +117,8 @@
     line-break: unset;
     line-height:.8em;
     color: rgb(28, 28, 28);
-    margin-left: -2px;
-    margin-top: 70px;
+    margin-left: 0px;
+    margin-top: 10px;
     text-align: center;
     z-index: 5;
  }

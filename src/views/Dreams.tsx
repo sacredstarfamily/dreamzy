@@ -23,7 +23,7 @@ export default function Dreams({currentUser, flashMessage}: DreamsProps) {
                 console.log(dream)
                 setDreams(dream)
             }
-        }else {
+        } else {
             flashMessage('No token found', 'danger')
         }
         }

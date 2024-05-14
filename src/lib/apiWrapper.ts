@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { MessageDataType, ReceivedMessageDataType } from '../types/index';
 import { 
     DreamFormDataType,
     DreamType,
@@ -6,11 +7,11 @@ import {
     InterpretationFormDataType,
     InterpretationType,
     UserType,
-    TokenType
+    TokenType,
  } from '../types/index';
 
-
-const baseURL:string = 'https://dreamzyapi.onrender.com'
+//const devURL:string = 'http://127.0.0.1:5000';
+const baseURL:string = 'http://127.0.0.1:5000'
 const userEndpoint:string = '/users'
 const tokenEndpoint:string = '/token'
 const userDreamsEndpoint:string = '/mydreamz'
@@ -287,6 +288,38 @@ async function deleteUserData(token: string): Promise<APIResponse<string>> {
     }
     return { data, error }
 }
+
+async function sendMessage(token: string,userId:number, message:MessageDataType): Promise<APIResponse<string>> {
+    let data;
+    let error;
+    try{
+        const response = await apiClientTokenAuth(token).post(userEndpoint + '/messages/' + userId, message);
+        data = response.data
+    } catch(err) {
+        if (axios.isAxiosError(err)){
+            error = err.response?.data.error
+        } else {
+            error = 'Something went wrong'
+        }
+    }
+    return { data, error }
+}
+
+async function getMessages(token: string, userId: number): Promise<APIResponse<ReceivedMessageDataType[]>> {
+    let data;
+    let error;
+    try{
+        const response = await apiClientTokenAuth(token).get(userEndpoint + '/messages/' + userId);
+        data = response.data
+    } catch(err) {
+        if (axios.isAxiosError(err)){
+            error = err.response?.data.error
+        } else {
+            error = 'Something went wrong'
+        }
+    }
+    return { data, error }
+}
 export {
     register,
     login,
@@ -301,5 +334,7 @@ export {
     updateInterpretation,
     updateUserData,
     likeDream,
-    deleteUserData
+    deleteUserData,
+    sendMessage,
+    getMessages
 }

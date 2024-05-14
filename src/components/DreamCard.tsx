@@ -53,15 +53,19 @@ export default function DreamCard({ dream, currentUser }: DreamCardProps) {
                 </Row>
                
                 <Card.Subtitle className="text-center mt-2">Created By: { dream.author.username }</Card.Subtitle>
-                <div className="buttonContainer">
-        <div className="likeBtnContainer">
-        <button onClick={likeUDream}><img src={thumbsup} alt="thumbs up" className="likebtn" /></button>
+        <div className="buttonContainer">
+       
+        <button onClick={likeUDream} className="likeBtn">
+        <img src={thumbsup} alt="thumbs up" className="likebtn" />
         <p className="liketext">{ dream.likes } Likes</p>
-        </div>
-        <div className="addInterpretationBtnContainer">
-            <img src={aOk} alt="add interpretation" className="addInterpretationBtn" />
+        </button>
+        
+        
+           <button onClick={()=>{alert("hhello")}} className="yup">
+            <img src={aOk} alt="add interpretation" className="aokBtn"/>
             <p className="addInterpretationText">Interpretations</p>
-        </div>
+            </button>
+        
         </div>
             </Card.Body>
             
