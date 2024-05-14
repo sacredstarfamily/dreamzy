@@ -11,7 +11,7 @@ import {
  } from '../types/index';
 
 //const devURL:string = 'http://127.0.0.1:5000';
-const baseURL:string = 'http://127.0.0.1:5000'
+const baseURL:string = 'https://dreamzyapi.onrender.com'
 const userEndpoint:string = '/users'
 const tokenEndpoint:string = '/token'
 const userDreamsEndpoint:string = '/mydreamz'
