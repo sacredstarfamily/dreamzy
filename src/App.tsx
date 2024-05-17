@@ -11,6 +11,7 @@ import Login from './views/Login'
 import Dreams from './views/Dreams';
 import EditDream from './views/EditDream';
 import Profile from './views/Profile';
+import ShopPage from './views/Shop';
 import AddInterpretation from './views/AddInterpretation';
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
 import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
@@ -100,6 +101,7 @@ const network = WalletAdapterNetwork.Devnet;
                     <Route path='/interpret/:dreamId' element={<AddInterpretation flashMessage={flashMessage} currentUser={currentUser} />} />
                     <Route path='/interpretations/:dreamId' element={<ViewInterpretation currentUser={currentUser} flashMessage={flashMessage} />} />
                     <Route path='/messages' element={<Messages currentUser={currentUser}/>} />
+                    <Route path='/shop' element={<ShopPage/>} />
                 </Routes>
                 
             </Container>
