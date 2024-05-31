@@ -10,7 +10,7 @@ import {
     TokenType,
  } from '../types/index';
 
-//const devURL:string = 'http://127.0.0.1:5000';
+//const baseURL:string = 'http://127.0.0.1:5000';
 const baseURL:string = 'https://dreamzyapi.onrender.com'
 const userEndpoint:string = '/users'
 const tokenEndpoint:string = '/token'
@@ -288,6 +288,21 @@ async function deleteUserData(token: string): Promise<APIResponse<string>> {
     }
     return { data, error }
 }
+async function addFriend(token: string, userId:number, friendId:number): Promise<APIResponse<string>> {
+    let data;
+    let error;
+    try{
+        const response = await apiClientTokenAuth(token).post(userEndpoint + '/' + userId + '/friends/' + friendId);
+        data = response.data
+    } catch(err) {
+        if (axios.isAxiosError(err)){
+            error = err.response?.data.error
+        } else {
+            error = 'Something went wrong'
+        }
+    }
+    return { data, error }
+}
 
 async function sendMessage(token: string,userId:number, message:MessageDataType): Promise<APIResponse<string>> {
     let data;
@@ -335,6 +350,7 @@ export {
     updateUserData,
     likeDream,
     deleteUserData,
+    addFriend,
     sendMessage,
     getMessages
 }

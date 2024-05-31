@@ -83,7 +83,6 @@ export default function Home({currentUser, isLoggedIn, flashMessage}:HomeProps) 
       {!isLoggedIn &&
       <>
        <h1 className="text-center">Welcome to Dreamzy</h1>
-       <h3>Your map to better understanding and sharing your dreams</h3>
        <h2 className="text-center">Please Sign Up or Log In to Continue</h2>
        </>
        }

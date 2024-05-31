@@ -21,8 +21,10 @@ export default function ComposeMessage({currentUser}: ComposeMessage){
         const response = await sendMessage(token,currentUser.id, messageData);
         if (response.error){
             console.error(response.error)
+            window.location.reload()
         } else {
             console.log(response.data)
+            window.location.reload()
         }
     }
     }

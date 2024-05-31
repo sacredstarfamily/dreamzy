@@ -34,7 +34,7 @@ export default function Messages({currentUser}: MessagesProps) {
     return (
         <div>
             <h1>Messages</h1>
-           {messages? messages.map((m)=>{return <div key={m.id}><h3>{m.sender_id}</h3><p>{m.message}</p></div>}): <p>No messages</p>}
+           {messages? messages.map((m)=>{return <div key={m.id}><h3>Message From: <br/>{m.sender.first_name} {m.sender.last_name}</h3><p>{m.message}</p></div>}): <p>No messages</p>}
             <ComposeMessage currentUser={currentUser}/>
            
         </div>
