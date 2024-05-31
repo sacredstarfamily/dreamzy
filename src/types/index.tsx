@@ -58,7 +58,10 @@ export type ReceivedMessageDataType = {
     sender_id:number,
     receiver_id:number,
     log_date:string,
-    sender: object
+    sender: {
+        first_name: string,
+        last_name: string
+    }
 }
 export type CategoryType = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark'
 
