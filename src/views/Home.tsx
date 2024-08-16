@@ -7,7 +7,7 @@ import {UserType, DreamType, DreamFormDataType, CategoryType} from '../types';
 import DreamCard from '../components/DreamCard';
 import DreamForm from '../components/DreamForm';
 import { getAllDreams, createDream } from '../lib/apiWrapper';
-
+import AnimatedLogoCard from '../components/AnimatedLogoCard';
 
 type HomeProps = {
     isLoggedIn: boolean,
@@ -72,21 +72,19 @@ export default function Home({currentUser, isLoggedIn, flashMessage}:HomeProps) 
      }
     return (
         <>
-      <div className="logo-container">
-      <div className="cloud">
-        <div className="cloudContainer">
-        <img id="sheep"src="./sheep.gif"alt="Jumping Sheep" width="40%" />
-        <img id="personSleeping"src="./sleepingperson.png" alt="sleepingPerson" width="60%"  />
-        </div>
-      </div>
-      </div>
+        
+     
+      <AnimatedLogoCard />
       {!isLoggedIn &&
       <>
+      
        <h1 className="text-center">Welcome to Dreamzy</h1>
+       
        <h2 className="text-center">Please Sign Up or Log In to Continue</h2>
        </>
        }
-      {isLoggedIn && <Row>
+      {isLoggedIn && 
+      <Row>
       <Col xs={12} md={6}>
                 <Form.Control value={searchTerm} placeholder='Search Dreams' onChange={handleInputChange} />
             </Col>
