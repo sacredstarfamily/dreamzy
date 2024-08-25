@@ -1,4 +1,4 @@
-import React from 'react';
+
 export default function AnimatedLogoCard() {    
     return (
         <div className="logo-container">
@@ -10,4 +10,4 @@ export default function AnimatedLogoCard() {
         </div>
         </div>
     )
-}
+} 
